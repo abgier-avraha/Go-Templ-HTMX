@@ -2,6 +2,6 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-$SCRIPT_DIR/generate.sh
+templ generate
 
-go run $SCRIPT_DIR/.
+go build $SCRIPT_DIR/../

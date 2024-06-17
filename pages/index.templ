@@ -1,0 +1,19 @@
+package pages
+
+import (
+	"app/services"
+)
+
+type IndexModel struct {
+	Services *services.Services
+}
+
+templ IndexTemplate(model *IndexModel) {
+	<div>
+		<ul>
+			for _, item := range model.Services.Repositories.Accounts.GetAccounts() {
+				<li>{ item.FirstName } { item.LastName }</li>
+			}
+		</ul>
+	</div>
+}

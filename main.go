@@ -1,17 +1,31 @@
 package main
 
 import (
+	"app/pages"
+	"app/repositories"
+	"app/services"
 	"context"
-	"os"
+	"fmt"
+	"log"
+	"net/http"
 )
 
-type Something struct {
-	Name string
-}
-
 func main() {
-	component := hello(&Something{
-		Name: "Shit",
+	port := 8081
+
+	services := &services.Services{
+		Repositories: services.Repositories{
+			Accounts: repositories.AccountRepository{},
+		},
+	}
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		pages.IndexTemplate(&pages.IndexModel{
+			Services: services,
+		}).Render(context.Background(), w)
 	})
-	component.Render(context.Background(), os.Stdout)
+
+	// Start server
+	log.Printf("Starting server on port http://localhost:%v\n", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", port), nil))
 }
