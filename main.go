@@ -1,8 +1,8 @@
 package main
 
 import (
-	"app/pages"
-	"app/pages/components"
+	"app/pages/index"
+	"app/pages/index/indexcomponents"
 	"app/repositories"
 	"app/services"
 	"context"
@@ -21,7 +21,7 @@ func main() {
 		},
 	}
 
-	http.HandleFunc("/components/search-table", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		accounts := services.Repositories.Accounts.GetAccounts()
 
 		query := r.URL.Query().Get("query")
@@ -34,21 +34,21 @@ func main() {
 			}
 		}
 
-		components.SearchTableTemplate(&components.SearchTableModel{
-			Names: names,
-		}).Render(context.Background(), w)
-	})
+		hxTarget := r.Header.Get("Hx-Target")
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		accounts := services.Repositories.Accounts.GetAccounts()
-
-		names := []string{}
-		for _, acc := range accounts {
-			names = append(names, fmt.Sprintf("%s %s", acc.FirstName, acc.LastName))
+		// Components
+		if hxTarget == "search-template-root" {
+			indexcomponents.SearchTableTemplate(&indexcomponents.SearchTableModel{
+				Names:        names,
+				DefaultQuery: query,
+			}).Render(context.Background(), w)
+			return
 		}
 
-		pages.IndexTemplate(&pages.IndexModel{
-			Names: names,
+		// Page
+		index.IndexTemplate(&index.IndexModel{
+			Names:        names,
+			DefaultQuery: query,
 		}).Render(context.Background(), w)
 	})
 

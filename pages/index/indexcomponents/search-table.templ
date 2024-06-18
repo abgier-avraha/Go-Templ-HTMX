@@ -1,0 +1,31 @@
+package indexcomponents
+
+type SearchTableModel struct {
+	Names        []string
+	DefaultQuery string
+}
+
+templ SearchTableTemplate(model *SearchTableModel) {
+	<div id="search-template-root">
+		<form method="get" action="/">
+			<input
+				id="query"
+				name="query"
+				type="text"
+				placeholder="Search..."
+				hx-trigger="keyup changed delay:500ms"
+				hx-get="/"
+				hx-target="#search-template-root"
+				hx-preserve
+				hx-push-url="true"
+				value={ model.DefaultQuery }
+			/>
+			<input type="submit"/>
+		</form>
+		<ul>
+			for _, item := range model.Names {
+				<li>{ item }</li>
+			}
+		</ul>
+	</div>
+}
