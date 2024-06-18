@@ -9,6 +9,10 @@ func (e AccountRepository) GetAccounts() []Account {
 			FirstName: "Johnny",
 			LastName:  "Appleseed",
 		},
+		{
+			FirstName: "Martha",
+			LastName:  "Washington",
+		},
 	}
 }
 

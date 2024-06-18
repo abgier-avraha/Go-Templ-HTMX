@@ -1,0 +1,26 @@
+package components
+
+type SearchTableModel struct {
+	Names []string
+}
+
+templ SearchTableTemplate(model *SearchTableModel) {
+	<div id="search-template-root">
+		<input
+			id="query"
+			name="query"
+			type="text"
+			placeholder="Search..."
+			hx-trigger="keyup changed delay:500ms"
+			hx-get="/components/search-table"
+			hx-target="#search-template-root"
+			hx-preserve
+			autofocus
+		/>
+		<ul>
+			for _, item := range model.Names {
+				<li>{ item }</li>
+			}
+		</ul>
+	</div>
+}

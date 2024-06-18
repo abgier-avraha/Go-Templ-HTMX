@@ -1,19 +1,17 @@
 package pages
 
 import (
-	"app/services"
+	"app/pages/components"
 )
 
 type IndexModel struct {
-	Services *services.Services
+	Names []string
 }
 
 templ IndexTemplate(model *IndexModel) {
-	<div>
-		<ul>
-			for _, item := range model.Services.Repositories.Accounts.GetAccounts() {
-				<li>{ item.FirstName } { item.LastName }</li>
-			}
-		</ul>
-	</div>
+	@Layout() {
+		@components.SearchTableTemplate(&components.SearchTableModel{
+			Names: model.Names,
+		})
+	}
 }
