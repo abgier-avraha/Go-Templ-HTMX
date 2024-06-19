@@ -21,6 +21,8 @@ func main() {
 		},
 	}
 
+	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("./public"))))
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		accounts := services.Repositories.Accounts.GetAccounts()
 
@@ -32,6 +34,9 @@ func main() {
 			if strings.Contains(strings.ToLower(fullName), strings.ToLower(query)) {
 				names = append(names, fullName)
 			}
+		}
+		if len(names) > 5 {
+			names = names[0:5]
 		}
 
 		hxTarget := r.Header.Get("Hx-Target")

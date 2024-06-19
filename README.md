@@ -1,9 +1,5 @@
 # Go templ with HTMX
 
-<!-- TODO: add htmx to repo -->
-<!-- TODO: add tailwind css to repo -->
-<!-- TODO: List of names in a table that are filterable via search bar -->
-
 ## Development
 
 ### Install `templ` Binary
@@ -38,15 +34,15 @@ The `templ` binary must be in your PATH variable for the VS Code extension to wo
         "templ": "html"
     },
     ```
+### Install Node Dependencies
 
+1. `npm install`
 
 ## Build
 
 ### Build, Run and Watch for Changes
 
 For you development convenience.
-
-Requires nodemon, install with `npm i -g nodemon`.
 
 -  `./scripts/watch.sh`
 
