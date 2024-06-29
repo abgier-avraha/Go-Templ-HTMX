@@ -1,8 +1,8 @@
 package index
 
 import (
-	"app/pages/index/indexcomponents"
-	"app/pages"
+	"app/components"
+	"app/layouts"
 )
 
 type IndexModel struct {
@@ -11,9 +11,9 @@ type IndexModel struct {
 }
 
 templ IndexTemplate(model *IndexModel) {
-	@pages.Layout() {
+	@layouts.Layout() {
 		<div class="max-w-2xl my-4 mx-auto">
-			@indexcomponents.SearchTableTemplate(&indexcomponents.SearchTableModel{
+			@components.SearchTableTemplate(&components.SearchTableModel{
 				Names:        model.Names,
 				DefaultQuery: model.DefaultQuery,
 			})

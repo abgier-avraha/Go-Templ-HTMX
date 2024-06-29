@@ -1,4 +1,4 @@
-package pages
+package layouts
 
 templ Layout() {
 	<html>
@@ -9,6 +9,7 @@ templ Layout() {
 		<body>
 			<!-- Preserve focus on preserved elements after htmx swap -->
 			<script>
+			htmx.config.defaultSwapStyle = "outerHTML";
 			document.body.addEventListener('htmx:beforeRequest', function (evt) {
 				const preserved = evt.detail.elt.attributes.getNamedItem("hx-preserve") !== null;
 				const focused = evt.detail.elt === document.activeElement;

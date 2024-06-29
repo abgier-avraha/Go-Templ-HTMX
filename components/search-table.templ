@@ -1,4 +1,4 @@
-package indexcomponents
+package components
 
 type SearchTableModel struct {
 	Names        []string
@@ -17,12 +17,12 @@ templ SearchTableTemplate(model *SearchTableModel) {
 					type="text"
 					class="title bg-gray-100 border border-gray-300 p-2 outline-none rounded-md mr-2 w-full"
 					placeholder="Search..."
-					hx-trigger="keyup changed delay:500ms"
+					value={ model.DefaultQuery }
+					hx-trigger="keyup changed delay:100ms"
+					hx-preserve
 					hx-get="/"
 					hx-target="#search-template-root"
-					hx-preserve
 					hx-push-url="true"
-					value={ model.DefaultQuery }
 				/>
 				<input type="submit" class="px-3 py-2 bg-indigo-500 text-white rounded-md"/>
 			</form>

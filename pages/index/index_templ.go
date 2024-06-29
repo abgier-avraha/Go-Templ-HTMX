@@ -11,8 +11,8 @@ import "io"
 import "bytes"
 
 import (
-	"app/pages"
-	"app/pages/index/indexcomponents"
+	"app/components"
+	"app/layouts"
 )
 
 type IndexModel struct {
@@ -43,7 +43,7 @@ func IndexTemplate(model *IndexModel) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = indexcomponents.SearchTableTemplate(&indexcomponents.SearchTableModel{
+			templ_7745c5c3_Err = components.SearchTableTemplate(&components.SearchTableModel{
 				Names:        model.Names,
 				DefaultQuery: model.DefaultQuery,
 			}).Render(ctx, templ_7745c5c3_Buffer)
@@ -59,7 +59,7 @@ func IndexTemplate(model *IndexModel) templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = pages.Layout().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layouts.Layout().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
