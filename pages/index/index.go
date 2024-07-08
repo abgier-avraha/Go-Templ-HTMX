@@ -25,10 +25,10 @@ func Handler(w http.ResponseWriter, r *http.Request, services *services.Services
 		names = names[0:5]
 	}
 
-	hxComponent := r.Header.Get("Hx-Target")
+	hxTarget := r.Header.Get("Hx-Target")
 
 	// Render component or page
-	switch hxComponent {
+	switch hxTarget {
 	case "search-template-root":
 		components.SearchTableTemplate(&components.SearchTableModel{
 			Names:        names,
