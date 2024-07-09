@@ -28,7 +28,7 @@ func SearchTableTemplate(model *SearchTableModel) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"search-template-root\"><div class=\"p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8\"><h3 class=\"text-xl font-bold text-gray-900mb-2\">Customers</h3><p class=\"text-sm italic text-gray-500 mb-2\">Displaying up to 5</p><form method=\"get\" action=\"/\" class=\"flex items-center\"><input id=\"query\" name=\"query\" type=\"text\" class=\"title bg-gray-100 border border-gray-300 p-2 outline-none rounded-md mr-2 w-full\" placeholder=\"Search...\" value=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"search-template-root\"><div class=\"p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8\"><h3 class=\"text-xl font-bold text-gray-900 mb-2\">Customers</h3><p class=\"text-sm italic text-gray-500 mb-2\">Displaying up to 5</p><form method=\"get\" action=\"/\" class=\"flex items-center\"><input id=\"query\" name=\"query\" type=\"text\" class=\"title bg-gray-100 border border-gray-300 p-2 outline-none rounded-md mr-2 w-full\" placeholder=\"Search...\" value=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
